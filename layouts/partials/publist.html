@@ -1,0 +1,45 @@
+<i>* denotes equal contributions</i>
+
+{{ $me := .Params.me }}
+<ul>
+  {{ range .Params.publications }}
+  <li class="my-3">
+    <strong>{{ .title }}.</strong>
+    <br/>
+
+    {{ $length := sub (len .authors) 1 }}
+    {{ range $idx, $author := .authors }}
+      {{ $break := "." }}
+      {{ if lt $idx $length }} {{ $break = ", " }} {{ end }}
+      {{ $equal := "" }}
+      {{ if isset $author "equal" }} {{ $equal = "*" }} {{ end }}
+      {{ if eq $author.name $me }}
+        <b>{{ $author.name }}</b>{{ $equal }}{{ $break }}
+      {{ else }}
+        {{ if isset $author "url" }}
+          <a href="{{ $author.url }}">{{ $author.name }}</a>{{ $equal }}{{ $break }}
+        {{ else }}
+          {{ $author.name }}{{ $equal }}{{ $break }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <br/>
+
+    {{ if isset .conf "short" }}
+      {{ .conf.name }}
+      {{ if isset .conf "url" }}
+        (<strong><a href="{{ .conf.url }}">{{ .conf.short }}</a></strong>).
+      {{ else }}
+        ({{ .conf.short }}).
+      {{ end }}
+    {{ else }}
+      {{ .conf.name }}.
+    {{ end }}
+    <br/>
+
+    {{ range .links }}
+      [<a href="{{ .url }}">{{ .name }}</a>]
+    {{ end }}
+  </li>
+  {{ end }}
+</ul>

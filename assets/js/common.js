@@ -1,3 +1,6 @@
+function initMode() {
+    document.documentElement.classList.remove('dark');
+}
 function updateMode() {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -17,7 +20,7 @@ function toggleMode() {
     }
     updateMode()
 }
-window.onload = updateMode();
+window.onload = initMode();
 function toggleMenu() {
     let navbar = document.getElementById("navbar-default");
     if (navbar.classList.contains("hidden")) {
