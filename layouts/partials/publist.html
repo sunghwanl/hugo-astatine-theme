@@ -14,7 +14,7 @@
       {{ $equal := "" }}
       {{ if isset $author "equal" }} {{ $equal = "*" }} {{ end }}
       {{ if eq $author.name $me }}
-        <b>{{ $author.name }}</b>{{ $equal }}{{ $break }}
+        <u>{{ $author.name }}</u>{{ $equal }}{{ $break }}
       {{ else }}
         {{ if isset $author "url" }}
           <a href="{{ $author.url }}">{{ $author.name }}</a>{{ $equal }}{{ $break }}
