@@ -3,12 +3,14 @@
 
     <hr style="margin-top:1.5rem">
 
+<!--
     <p class="text-2xl">About</p>
     {{ with .Site.GetPage "/about"}}
       {{ .Content }}
     {{ end }}
 
     <hr>
+-->
 
     <p class="text-2xl">Publications</p>
     {{ with .Site.GetPage "/publications"}}
@@ -22,12 +24,17 @@
       {{ .Content }}
     {{ end }}
 
-<!--
     <hr>
 
-    <p class="text-2xl">Honor & Awards</p>
+    <p class="text-2xl">Work Experience</p>
+    {{ with .Site.GetPage "/work"}}
+      {{ .Content }}
+    {{ end }}
+
+    <hr>
+
+    <p class="text-2xl">Honors and Awards</p>
     {{ with .Site.GetPage "/awards"}}
       {{ .Content }}
     {{ end }}
--->
 {{ end }}

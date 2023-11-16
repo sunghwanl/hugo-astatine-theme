@@ -14,7 +14,9 @@
 
   <div class="mx-4 basis-60 grow shrink-2 leading-snug text-base col-span-2">
     <p class="text-3xl">{{ .Params.name }}</p>
-    <p class="text-xl my-2 border-none">{{ .Params.job }}</p>
+    <!--    <p class="text-xl my-2 border-none">{{ .Params.job }}</p> -->
+
+    {{ with .Params.intro }}{{ . | markdownify | safeHTML }}{{ end }}
 
     {{ range .Params.affiliation }}
     <p class="my-1"><a href={{ .url }}>{{ .name }}</a></p>
